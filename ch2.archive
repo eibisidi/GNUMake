@@ -1,0 +1,13 @@
+#Page 37 Managing Libraries
+VPATH = src include
+CPPFLAGS = -Iinclude
+
+all : HelloWorld
+
+#HelloWorld :  main.o  -ltest
+#make: *** No rule to make target '-ltest', needed by 'HelloWorld'.  Stop.
+HelloWorld :  main.o  libtest.a
+	$(CC) $^ -o $@
+
+libtest.a : strcat.o print.o
+	$(AR) $(ARFLAGS) $@ $^

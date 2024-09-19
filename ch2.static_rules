@@ -1,0 +1,15 @@
+#Page 23 Static Pattern Rules
+VPATH = src include
+CFLAGS = -Iinclude
+
+objects = main.o strcat.o print.o
+
+all : HelloWorld
+
+HelloWorld : $(objects)
+	$(LINK.o) $^ $(LDLIBS) -o $@
+
+$(objects):%.o:%.c
+	$(COMPILE.c) $(OUTPUT_OPTION) $<
+
+
