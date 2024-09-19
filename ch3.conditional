@@ -1,0 +1,41 @@
+#page 54 Syntax of Conditionals
+
+#foo is defined
+bar =
+foo = $(bar)
+ifdef foo
+frobozz = yes
+else
+frobozz = no
+endif
+
+#fub is not defined
+fub =
+ifdef fub
+fubee = yes
+else
+fubee = no
+endif
+
+var1=   abcd
+var2=abcd
+
+#${var1} equals ${var2}
+ifeq "${var1}" "${var2}"
+eq=yes
+else
+eq=no
+endif 
+
+#${var1} equals "abcd"
+ifeq "${var1}" "abcd"
+eqs=yes
+else
+eqs=no
+endif 
+
+all:
+	@echo $(frobozz)
+	@echo $(fubee)
+	@echo $(eq)
+	@echo $(eqs)

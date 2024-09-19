@@ -1,0 +1,6 @@
+#page 59 .VARIABLES
+
+#todo print all variables value in .VARIABLES
+.PHONY:list
+list:
+	@echo "$(.VARIABLES)"

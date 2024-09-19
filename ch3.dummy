@@ -1,0 +1,6 @@
+#page 57 infinite loop 
+.PHONY: dummy
+ch3.dummy: dummy
+	echo "doing"
+	sleep 1
+	touch $@

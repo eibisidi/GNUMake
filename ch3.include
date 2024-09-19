@@ -1,0 +1,18 @@
+#page 56 include directive
+VPATH=src include
+CPPFLAGS=-Iinclude
+include src.mk
+$(warning Finished include)
+
+objects=$(subst .c,.o,$(sources))
+
+all : HelloWorld
+
+HelloWorld : ${objects}
+	${LINK.o} $^ ${LDLIBS} -o $@
+
+src.mk: 
+	@echo "Generating src.mk"
+	echo -n "sources=" > $@
+	ls -1 src/ | tr '\n' ' ' >> $@
+	echo "\n" >> $@
