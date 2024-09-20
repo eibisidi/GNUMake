@@ -1,0 +1,13 @@
+#page 63 built-in call function
+
+words := he the hen other the%
+
+all_source := count_words.c counter.c lexer.l counter.h lexer.h
+to_compile := $(filter-out %.h, $(all_source))
+
+get-the:
+	@echo he matches: $(filter he, $(words))
+	@echo %he matches: $(filter %he, $(words))
+	@echo he% matches: $(filter he%, $(words))
+	@echo %he% matches: $(filter %he%, $(words))
+	@echo ${to_compile}

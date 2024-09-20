@@ -1,0 +1,15 @@
+#page 74 find-program
+
+#$(call find-program,wildcard-pattern)
+find-program=$(wildcard 				\
+			  $(addsuffix /$1,			\
+			   $(sort					\
+			    $(subst :, ,			\
+				 $(subst ::,:.:,        \
+				  $(patsubst :%,.:%, 	\
+				   $(patsubst %:,%:.,$(PATH))))))))
+
+find:
+	@echo "gcc is " $(call find-program,gcc)
+	@echo "ls is " $(call find-program,ls)
+	@echo "total bins number:" $(words $(call find-program,*))

@@ -1,0 +1,10 @@
+#page 72 wildcard function
+
+source-dirs := $(sort 		\
+				 $(dir		\
+				  $(shell find . -name '*.c')))
+
+all:
+	@echo "source and header in CWD:$(wildcard *.c *.h)"
+	@echo "$(wildcard src/*.c include/*.h)"
+	@echo "$(source-dirs)"

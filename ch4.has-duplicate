@@ -1,0 +1,16 @@
+#page 70 shell function
+
+#$(call has-duplicates, word-list)
+has-duplicates = $(filter		\
+				   $(words $1),  \
+				   $(words $(sort $1)))
+
+define duplicated
+#todo
+endef
+		   
+all:
+	echo "$(call has-duplicates,a b b c)"
+	echo "$(call has-duplicates,a b c)"
+#	echo "$(call duplicated, a b b c)"
+#	echo "$(call duplicated, a b c)"

@@ -1,0 +1,27 @@
+#page 63 built-in call function
+
+obj=main
+ptr1=state_1
+ptr2=state_2
+
+#$(call state_1, arg1)
+define state_1
+  @echo "Calling 1"
+  @echo "arg1 = $1"
+endef
+
+#$(call state_2, arg1)
+define state_2
+  @echo "Calling 2"
+  @echo "arg1 = $1"
+endef
+
+all: state1 state2
+
+.PHONY:state1
+state1:
+	$(call ${ptr1}, obj)
+
+.PHONY:state2
+state2:
+	$(call ${ptr2}, obj)
