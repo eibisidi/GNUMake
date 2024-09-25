@@ -1,0 +1,24 @@
+#page 184
+define ten-times
+  TESTS += $1
+  .PHONY:$1
+  $1:
+	@echo $(MAKE) --no-print-directory --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2; \
+	time $(MAKE) --no-print-directory  --silent $2;
+endef
+
+.PHONY:all
+all:
+
+$(eval $(call ten-times,make-bash,-f make-bash.mk))
+
+all:$(TESTS)
