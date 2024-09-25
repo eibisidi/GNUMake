@@ -1,0 +1,21 @@
+#$(call build-library, object-files)
+foo_lib=foo.a
+bar_lib=bar.a
+foo_objects=src/print.o
+bar_objects=src/strcat.o
+
+define build-library
+	ar rv $@ $1
+	$(call build-library-hook,$@)
+endef
+
+all : $(foo_lib) $(bar_lib)
+
+$(foo_lib):build-library-hook= echo "building foo_lib finished"
+$(foo_lib):$(foo_objects)
+	$(call build-library, $^)
+	
+$(bar_lib):build-library-hook= echo "building bar_lib finished"
+$(bar_lib):$(bar_objects)
+	$(call build-library, $^)
+	

@@ -1,0 +1,15 @@
+.PHONY:all app libstr libprint
+all : app
+
+app : libprint libstr
+
+app libstr libprint:
+	$(MAKE) --directory=$@ ${TARGET}
+
+.PHONY:clean app.clean libstr.clean libprint.clean
+clean : app.clean libstr.clean libprint.clean
+	@echo "clean finished"
+
+app.clean libstr.clean libprint.clean:
+	$(MAKE) --directory=$(basename $@) clean
+	

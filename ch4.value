@@ -1,0 +1,8 @@
+#page 86 the value function
+FOO = $PATH
+
+all :
+#echo ATH
+	@echo $(FOO)
+#echo $PATH
+	@echo $(value FOO)

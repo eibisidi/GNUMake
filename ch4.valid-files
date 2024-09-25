@@ -1,0 +1,8 @@
+#page 75 valid-files
+
+#$(call valid-files,file-list)
+valid-files = test -s . $(addprefix -a -s ,$1)
+
+all:
+	@$(call valid-files,${MAKEFILE_LIST}) \
+    	&& echo "file exist"

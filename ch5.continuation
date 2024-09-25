@@ -1,0 +1,11 @@
+#page 91 continuing long command
+
+all: file_list
+	@echo $$$$
+	@echo $$$$
+
+file_list:
+	for d in src include; \
+	do					  \
+		echo $${d}/*.[ch]; \
+	done > $@

@@ -1,0 +1,7 @@
+#page 98 command environments
+export MAKEVAR="abcd"
+all:
+	@echo "MAKELEVEL=$$MAKELEVEL"
+	@echo "MAKEFLAGS=$$MAKEFLAGS"
+	@export MYVAR="husy";echo "MYVAR=$$MYVAR"
+	@echo "MAKEVAR=$$MAKEVAR"

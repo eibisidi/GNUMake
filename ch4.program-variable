@@ -1,0 +1,49 @@
+#page 82 program variable
+
+.PHONY:show-variables
+all:show-variables
+
+#$(call program-variables,variable-prefix,file-list)
+define program-variables
+  $1_sources=$(filter %.c,$2)
+  $1_headers=$(filter %.h,$2)
+  $1_objects=$(subst .c,.o,$(filter %.c,$2))
+  
+#$($1_objects): $($1_headers)  this will not work
+  $$($1_objects): $$($1_headers)
+  
+endef
+
+$(eval $(call program-variables,ls,ls.c ls.h glob.c glob.h))
+
+ls : $(ls_objects)
+	echo "ls rules"
+
+#$(call program-sources,file-list)
+define program-sources
+$(filter %.c,$1)
+endef
+
+#$(call program-headers,file-list)
+define program-headers
+$(filter %.h,$1)
+endef
+
+#$(call program-objects,file-list)
+define program-objects
+$(patsubst %.c,%.o,$(filter %.c,$1))
+endef
+
+gcc_sources=$(call program-sources,compile.c compile.h syntax.c syntax.h)
+gcc_headers=$(call program-headers,compile.c compile.h syntax.c syntax.h)
+gcc_objects=$(call program-objects,compile.c compile.h syntax.c syntax.h)
+
+
+
+show-variables:
+	# $(ls_sources)
+	# $(ls_headers)
+	# $(ls_objects)
+	# $(gcc_sources)
+	# $(gcc_headers)
+	# $(gcc_objects)

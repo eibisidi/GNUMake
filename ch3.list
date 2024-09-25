@@ -1,6 +1,8 @@
 #page 59 .VARIABLES
 
-#todo print all variables value in .VARIABLES
+#print all variables value in .VARIABLES
+vars_list:=$(foreach var,$(sort ${.VARIABLES}), ${var}=${${var}}\n)
+
 .PHONY:list
 list:
-	@echo "$(.VARIABLES)"
+	@echo "$(vars_list)"

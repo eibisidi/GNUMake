@@ -1,0 +1,14 @@
+#page 240 syntax errors
+
+#*** recipe commences before first target.  Stop.
+#	echo "error"
+
+VAR="abcd"
+
+all:
+#*** missing separator.  Stop.
+#  ls
+
+
+#*** unterminated variable reference.  Stop
+	@echo $(VAR

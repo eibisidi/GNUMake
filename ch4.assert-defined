@@ -1,0 +1,20 @@
+#page 79 assert-defined
+
+#$(call assert,condition,message)
+define assert
+  $(if $1,,$(error Assertion failed: "$2"))
+endef
+
+#$(call assert-defined,variable-name)
+define assert-defined
+#$(call assert,\   #\ is quite annoying
+$(filter-out undefined,$(origin $1)),$1 is not defined)
+  $(call assert,$(filter-out undefined,$(origin $1)),$1 is not defined)
+endef
+
+.PHONY:all
+all:
+	@echo "$(call assert-defined,<)"
+	@echo "$(call assert-defined,?)"
+	@echo "$(call assert-defined,PATH)"
+	@echo "$(call assert-defined,aaa)"

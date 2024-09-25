@@ -1,0 +1,16 @@
+#
+
+SHELL=/bin/bash
+
+all:
+	[[ -d config ]] || mkdir config
+	ls config
+
+.PHONY:config
+config:
+	if [ ! -d $@ ]; 		\
+	then					\
+		mkdir $@;			\
+	fi
+	ls $@
+
